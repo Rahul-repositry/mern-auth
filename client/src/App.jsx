@@ -8,6 +8,17 @@ import Profile from "./pages/Profile";
 import Header from "./components/Header";
 
 const App = () => {
+  const ErrorPage = () => {
+    return (
+      <div className=" h-screen w-screen flex place-content-center place-items-center">
+        <h1>
+          Error Page not Found{" "}
+          <span className=" text-red-600">404 Not Found </span>
+        </h1>
+      </div>
+    );
+  };
+
   return (
     <div>
       <BrowserRouter>
@@ -18,6 +29,7 @@ const App = () => {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -23,7 +23,7 @@ const duplicateKeyErrorHandler = (err) => {
   const obj = err.keyValue;
   const key = Object.keys(obj);
   const value = Object.values(obj);
-  const msg = `User already exists with "${key} - ${value}". Please use another ${key}!`;
+  const msg = `User already exists with ${key} - ${value}. Please use another ${key}!`;
   console.log(msg);
   return new CustomError(msg, 400);
 };
@@ -34,11 +34,13 @@ const prodErrors = (res, error) => {
     res.status(error.statusCode).json({
       status: error.statusCode,
       message: error.message,
+      success: false,
     });
   } else {
     res.status(500).json({
       status: "error",
       message: "Something went wrong! Please try again later.",
+      success: false,
     });
   }
 };
