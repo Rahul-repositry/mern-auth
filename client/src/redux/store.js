@@ -17,7 +17,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: false, //Disabling the serializableCheck (by setting it to false) removes this validation. This might be necessary in some situations where you're using non-serializable data structures in your state or actions (e.g., functions, Symbols, Sets).
     }),
 });
 
