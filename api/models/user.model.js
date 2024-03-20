@@ -4,17 +4,28 @@ const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: true,
-      unique: true,
+      validate: {
+        validator: function (value) {
+          console.log({
+            value: value,
+            typeOf: typeof value,
+          });
+          return typeof value === "string";
+        },
+        message: "Username must be a string.",
+      },
+      required: [true, " Username is Required."],
+      unique: [true, "User already present."],
     },
+    age: Number,
     email: {
       type: String,
-      required: true,
-      unique: true,
+      required: [true, "Email is Required"],
+      unique: [true, "Email already exists"],
     },
     password: {
       type: String,
-      required: true,
+      required: [true, "Password is required"],
     },
     profilePicture: {
       type: String,
