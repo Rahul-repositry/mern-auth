@@ -5,7 +5,17 @@ import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import { globalErrorHandler } from "./controllers/error.controller.js";
 import cookieParser from "cookie-parser";
+// import admin from "firebase-admin";
+// import serviceAccount from "../serviceAccountKey.cjs" assert { type: "json" }; // Use assert { type: 'json' }
+
 dotenv.config();
+
+// Initialize Firebase Admin SDK
+// if (!admin.apps.length) {
+//   admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount),
+//   });
+// }
 
 mongoose
   .connect(process.env.MONGOURI)
